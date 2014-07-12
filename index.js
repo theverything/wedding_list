@@ -1,5 +1,6 @@
 var co = require('co');
 var fs = require('fs');
+var chalk = require('chalk');
 var yesRegex = /^\s*\-.*\[(\d+)\]/im;
 var maybeRegex = /^\s*\-.*\[(\d+)\?\]/im
 
@@ -55,5 +56,9 @@ module.exports = co(function *() {
   var data = yield readFile('./invites.md', {encoding: 'utf8'});
   var counts = yield parse(data);
   var sums = yield sumUp(counts);
-  console.log("## WEDDING COUNTS ##\nYes: %s\nMaybe: %s\nTotal: %s", sums.yes, sums.maybe, sums.total);
+
+  console.log(chalk.red("##### WEDDING COUNTS #####"));
+  console.log(chalk.green("Yes: %s"), sums.yes)
+  console.log(chalk.yellow("Maybe: %s"), sums.maybe)
+  console.log(chalk.blue("------------\nTotal: %s\n"), sums.total)
 });

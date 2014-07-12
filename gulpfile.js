@@ -1,7 +1,8 @@
 var gulp = require('gulp');
+var counts = require('./index');
 
 gulp.task('count', function () {
-  require('./index')();
+  counts();
 });
 
 // Rerun the task when a file changes
