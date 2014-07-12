@@ -1,7 +1,7 @@
 var co = require('co');
 var fs = require('fs');
-var yesRegex = /^\s*\-.*\[(\d)\]/im;
-var maybeRegex = /^\s*\-.*\[(\d)\?\]/im
+var yesRegex = /^\s*\-.*\[(\d+)\]/im;
+var maybeRegex = /^\s*\-.*\[(\d+)\?\]/im
 
 var readFile = function (path, opts) {
   return function (cb) {
@@ -51,9 +51,9 @@ var sumUp = function (counts) {
   }
 };
 
-co(function *() {
+module.exports = co(function *() {
   var data = yield readFile('./invites.md', {encoding: 'utf8'});
   var counts = yield parse(data);
   var sums = yield sumUp(counts);
   console.log("## WEDDING COUNTS ##\nYes: %s\nMaybe: %s\nTotal: %s", sums.yes, sums.maybe, sums.total);
-})();
+});
