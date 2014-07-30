@@ -12,11 +12,9 @@ var readFile = function (path, opts) {
 
 var parse = function (data) {
   var lines = data.split("\n");
-  var yesCounts = [];
-  var maybeCounts = [];
   var counts = {
-    yes: yesCounts,
-    maybe: maybeCounts
+    yes: [],
+    maybe: []
   };
 
   lines.forEach(function (line) {
@@ -24,11 +22,11 @@ var parse = function (data) {
     var maybeMatch = line.match(maybeRegex);
 
     if (yesMatch && yesMatch.length) {
-      yesCounts.push(parseInt(yesMatch[1]));
+      counts.yes.push(parseInt(yesMatch[1]));
     }
 
     if (maybeMatch && maybeMatch.length) {
-      maybeCounts.push(parseInt(maybeMatch[1]));
+      counts.maybe.push(parseInt(maybeMatch[1]));
     }
   });
 
