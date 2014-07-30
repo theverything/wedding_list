@@ -1,6 +1,6 @@
 {
   "name": "wedding_list",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^0.5.1",
-    "co": "^3.0.6"
+    "co": "^3.0.6",
+    "gulp": "^3.8.6"
   }
 }
